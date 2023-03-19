@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState} from 'react'
 
 function Copyright(props) {
   return (
@@ -28,15 +29,31 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({setUser}) {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+
+    fetch("/login", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+    },
+      body: JSON.stringify({ email, password }), 
+    })
+    .then((r => r.json()))
+    .then(data => console.log(data))
   };
+  
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,6 +83,8 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -76,6 +95,8 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
