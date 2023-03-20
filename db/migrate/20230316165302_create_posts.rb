@@ -8,7 +8,6 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :state
       t.string :cusine
       t.string :restaurant_name
-      t.integer :influencer_id
 
       t.timestamps
     end

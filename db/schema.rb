@@ -17,7 +17,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_165500) do
   create_table "favorites", force: :cascade do |t|
     t.integer "post_id"
     t.integer "influencer_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,7 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_165500) do
     t.string "state"
     t.string "cusine"
     t.string "restaurant_name"
-    t.integer "influencer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,15 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_165500) do
   create_table "reviews", force: :cascade do |t|
     t.string "comment"
     t.integer "post_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.integer "influencer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

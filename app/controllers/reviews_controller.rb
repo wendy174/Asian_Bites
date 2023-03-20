@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
     
     private
 
-   def review_params 
-        params.permit(:comment, :post_id, :user_id)
+   def influencer_params
+        params.permit(:comment, :post_id, :influencer_id)
    end
 end
