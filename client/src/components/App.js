@@ -6,6 +6,8 @@ import {Routes, Route} from "react-router-dom"
 import { CardHeader } from "@mui/material";
 import NavBar from "./NavBar"
 import Signup from "./Signup"
+import PostPage from './PostPage'
+import Homepage from "./Homepage"
 
 
 
@@ -25,10 +27,15 @@ function App() {
 
     <div>
       <NavBar user={user} />
+      <PostPage />
+
+
+
       <Routes>
         <Route path="/signin" element={<SignIn setUser={setUser}/>} />
-        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<Homepage/>} />
         <Route path="/signup" element={<Signup />} />
+        <Route path='/posts' element={<PostPage />} />
       </Routes>
     </div>
    
