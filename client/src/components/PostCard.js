@@ -14,6 +14,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Button from '@mui/material/Button';
+import './PostCard.css'
+
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -40,11 +43,12 @@ const ExpandMore = styled((props) => {
 
 
 function PostCard({post}) { 
-    const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
 
   return (
 <Card sx={{ maxWidth: 345 }}>
@@ -81,6 +85,11 @@ function PostCard({post}) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        <CardActions sx={{ml: 'auto'}}>
+          <Button>Delete</Button>
+          <Button>Edit</Button>
+        </CardActions>
+    
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
