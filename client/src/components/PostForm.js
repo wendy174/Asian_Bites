@@ -3,10 +3,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
+// import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -28,9 +28,11 @@ function Copyright(props) {
   );
 }
 
+// params.permit(:description, :image, :address, :city, :state, :cusine, :restaurant_name)
+
 const theme = createTheme();
 
-export default function SignIn({setUser}) {
+export default function PostForm({handleNewPost}) {
 
   const [description, setDescription] = useState('')
   const [image, setImage] = useState('')
@@ -40,25 +42,26 @@ export default function SignIn({setUser}) {
   const [cusine, setCusine] = useState('')
   const [restaurant_name, setRestaurantName] = useState('')
 
-    let newPost = { 
-        description: description, 
-        image: image, 
-        address: address, 
-        city: city, 
-        state: state, 
-        cusine: cusine, 
-        restaurant_name: restaurant_name 
-    }
+
+  let newPost = { 
+      description: description, 
+      image: image, 
+      address: address, 
+      city: city, 
+      state: state, 
+      cusine: cusine, 
+      restaurant_name: restaurant_name 
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("/lposts", {
+    fetch("/posts", {
       method: "POST",
       headers: {
       "Content-Type": "application/json",
     },
-      body: JSON.stringify({newPost}), 
+      body: JSON.stringify(newPost)
     })
     .then((r => r.json()))
     .then(data => console.log(data))
@@ -130,7 +133,7 @@ export default function SignIn({setUser}) {
               id="address"
               autoComplete="current-address"
               value={address}
-              onChange={(e) => address(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
             />
             <TextField
               margin="normal"
