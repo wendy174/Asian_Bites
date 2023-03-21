@@ -23,6 +23,9 @@ function NavBar({user}) {
             <Button color="inherit" component={Link} to="/signup">
               Sign Up
             </Button>
+            <Button color="inherit" component={Link} to="/postform">
+              Add Post 
+            </Button>
           </Toolbar>
         </AppBar>
       );

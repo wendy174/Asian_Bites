@@ -1,9 +1,13 @@
-
+import PostPage from './PostPage'
+import NavBar from './NavBar'
 
 function Homepage() { 
 
     return ( 
-        <h1></h1>
+        <div>
+            <NavBar />
+            <PostPage />
+        </div>
     )
 }
 
