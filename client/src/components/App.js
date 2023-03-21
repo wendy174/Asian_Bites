@@ -8,6 +8,7 @@ import NavBar from "./NavBar"
 import Signup from "./Signup"
 import PostPage from './PostPage'
 import Homepage from "./Homepage"
+import PostForm from './PostForm'
 
 
 
@@ -26,16 +27,12 @@ function App() {
   return (
 
     <div>
-      <NavBar user={user} />
-      <PostPage />
-
-
-
       <Routes>
         <Route path="/signin" element={<SignIn setUser={setUser}/>} />
         <Route path="/" element={<Homepage/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path='/posts' element={<PostPage />} />
+        <Route path='/postform' element={<PostForm />} />
       </Routes>
     </div>
    
