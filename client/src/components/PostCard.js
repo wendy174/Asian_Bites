@@ -42,12 +42,19 @@ const ExpandMore = styled((props) => {
 
 
 
-function PostCard({post}) { 
+function PostCard({post, handleDeletePost}) { 
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleDelete = () => { 
+    fetch(`/posts/${post.id}`, {
+    method: "DELETE",
+  }).then((r) => r.json())
+    .then(deletedPost => handleDeletePost(deletedPost));
+  }
 
 
   return (
@@ -86,7 +93,7 @@ function PostCard({post}) {
           <ShareIcon />
         </IconButton>
         <CardActions sx={{ml: 'auto'}}>
-          <Button>Delete</Button>
+          <Button onClick={handleDelete}>Delete</Button>
           <Button>Edit</Button>
         </CardActions>
     

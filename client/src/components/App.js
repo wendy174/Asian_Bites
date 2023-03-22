@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import SignIn from "./SignIn"
-import Header from "./Header"
 import {Routes, Route} from "react-router-dom"
 import { CardHeader } from "@mui/material";
 import NavBar from "./NavBar"
@@ -9,6 +8,7 @@ import Signup from "./Signup"
 import PostPage from './PostPage'
 import Homepage from "./Homepage"
 import PostForm from './PostForm'
+import EditPostForm from './EditPostForm'
 
 
 
@@ -33,6 +33,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path='/posts' element={<PostPage />} />
         <Route path='/postform' element={<PostForm />} />
+        {/* <Route path='/editpostform' element={<EditPostForm />} /> */}
       </Routes>
     </div>
    

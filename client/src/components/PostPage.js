@@ -18,9 +18,14 @@ function PostPage() {
         setPosts([...posts,newPost])
     }
 
+    function handleDeletePost(deletedPost) {
+        const updatedPost = posts.filter(post => post.id !== deletedPost.id); 
+        setPosts(updatedPost)
+    }
+
     return (
         <div>
-            <PostList posts={posts}/>
+            <PostList posts={posts} handleDeletePost={handleDeletePost}/>
             <PostForm handleNewPost={handleNewPost}/>
         </div>
 
