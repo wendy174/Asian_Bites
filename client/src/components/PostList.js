@@ -1,12 +1,13 @@
 import React from "react";
 import PostCard from "./PostCard";
 
-function PostList({posts}) { 
+function PostList({posts, handleDeletePost}) { 
 
 
     return (
     <ul className="cards">
-      {posts.map(post => <PostCard key={post.id} post={post}/>)}
+
+      {posts.map(post => <PostCard key={post.id} post={post} handleDeletePost={handleDeletePost}/>)}
     </ul>
 
     )

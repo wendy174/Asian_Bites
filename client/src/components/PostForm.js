@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import PostAddIcon from '@mui/icons-material/PostAdd';
 
 
@@ -28,7 +28,6 @@ function Copyright(props) {
   );
 }
 
-// params.permit(:description, :image, :address, :city, :state, :cusine, :restaurant_name)
 
 const theme = createTheme();
 
@@ -55,7 +54,7 @@ export default function PostForm({handleNewPost}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    
     fetch("/posts", {
       method: "POST",
       headers: {
