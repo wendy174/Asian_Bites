@@ -25,7 +25,7 @@ function PostPage() {
 
     return (
         <div>
-            <PostList posts={posts} handleDeletePost={handleDeletePost}/>
+            <PostList posts={posts} handleDeletePost={handleDeletePost} />
             <PostForm handleNewPost={handleNewPost}/>
         </div>
 

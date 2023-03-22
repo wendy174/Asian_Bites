@@ -1,11 +1,11 @@
 import PostPage from './PostPage'
 import NavBar from './NavBar'
 
-function Homepage() { 
+function Homepage({influencer}) { 
 
     return ( 
         <div>
-            <NavBar />
+            <NavBar influencer={influencer} />
             <PostPage />
         </div>
     )

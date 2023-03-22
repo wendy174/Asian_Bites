@@ -29,21 +29,10 @@ const ExpandMore = styled((props) => {
     }),
   }));
 
-    const CardContainer = styled('div')`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    `;
-
-    const StyledCard = styled(Card)`
-    width: 345px;
-    height: 600px; /* or any other fixed height */
-`;
-
-
 
 function PostCard({post, handleDeletePost}) { 
   const [expanded, setExpanded] = React.useState(false);
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -110,7 +99,13 @@ function PostCard({post, handleDeletePost}) {
         <CardContent>
           <Typography paragraph>
             <p>Address: {post.address}</p>
-            <p>Cuisine: {post.cusine}</p>
+            <p>Cuisine: {post.cusine} </p>
+            <ul> 
+              {post.reviews.map((review) => 
+                <li> 
+                  Reviews: {review.comment}
+                </li>)}
+            </ul>
           </Typography>
         </CardContent>
       </Collapse>

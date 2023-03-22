@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState} from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -29,10 +30,13 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({setUser}) {
+export default function SignIn({updateInfluencer}) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+  const [errors, setErrors] = useState([])
+  console.log(errors)
 
 
   const handleSubmit = (event) => {
@@ -50,10 +54,21 @@ export default function SignIn({setUser}) {
     },
       body: JSON.stringify({ email, password }), 
     })
-    .then((r => r.json()))
-    .then(data => console.log(data))
+    .then(res => {
+      if(res.ok){
+          res.json().then(influencer => {
+              updateInfluencer(influencer)
+          })
+      }else {
+          res.json().then(json => setErrors(json.errors))
+      }
+  })
+
   };
   
+
+  // .then((r => r.json()))
+  //   .then(data => console.log(data))
 
   return (
     <ThemeProvider theme={theme}>

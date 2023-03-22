@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
           session[:influencer_id] = influencer.id
           render json: influencer, status: :ok
         else
-          render json: { error: ["Invalid email or password"]}, status: :unprocessable_entity
+          render json: { error: "Invalid email or password"}, status: :unprocessable_entity
         end
       end
 
