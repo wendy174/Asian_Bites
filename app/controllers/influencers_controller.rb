@@ -1,5 +1,7 @@
 class InfluencersController < ApplicationController
-    skip_before_action :authorize, only: :create
+    # skip_before_action :authorize, only: :create
+    ## not working, authorize is acting on all methods 
+
     def index 
         influencers = Influencer.all 
         render json: influencers
@@ -24,7 +26,7 @@ class InfluencersController < ApplicationController
     private
 
    def influencer_params 
-        params.permit(:email, :password) 
+        params.permit(:email, :password, :bio, :name, :social_media_links) 
    end
 
 

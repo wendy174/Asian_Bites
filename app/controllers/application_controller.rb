@@ -14,11 +14,12 @@ class ApplicationController < ActionController::API
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end 
 
+    # checks to see if current user (authenticated)
+    # this function ensures that ensure that the user is authenticated before performing certain actions.
+
     def authorize 
         @current_influencer = Influencer.find_by(id: session[:influencer_id])
         render json: {errors: 'Not authorized'}, status: :unauthorized unless @current_influencer 
     end
-
-
 
 end

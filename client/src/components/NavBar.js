@@ -5,8 +5,19 @@ import { Link } from 'react-router-dom';
 
 
 
-function NavBar({influencer}) {
- 
+function NavBar({influencer, updateInfluencer}) {
+
+  const handleLogOut = () => { 
+    fetch('/logout', { 
+      method: 'DELETE'
+    })
+    .then(res => { 
+      if(res.ok) { 
+        updateInfluencer(null)
+
+      }
+    })
+  }
 
     return (
         <AppBar position="static">
@@ -22,6 +33,9 @@ function NavBar({influencer}) {
             </Button>
             <Button color="inherit" component={Link} to="/signup">
               Sign Up
+            </Button>
+            <Button color="inherit" onClick={handleLogOut}>
+              Log out 
             </Button>
             <Button color="inherit" component={Link} to="/postform">
               Add Post 

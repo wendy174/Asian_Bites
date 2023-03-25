@@ -14,8 +14,11 @@ import SinglePost from './SinglePost'
 
 
 
+
 function App() {
   const [influencer, setCurrentInfluencer] = useState('')
+  
+  console.log(influencer)
 
   // fetch who is current user that is login 
   useEffect(() => { 
@@ -24,19 +27,22 @@ function App() {
     .then(setCurrentInfluencer)
   }, []) 
 
+  // gets current influencer 
   const updateInfluencer = (influencer) => setCurrentInfluencer(influencer)
   
   return (
 
     <div>
+      <NavBar influencer={influencer}/>
       <Routes>
         <Route path="/signin" element={<SignIn updateInfluencer={updateInfluencer}/>} />
         <Route path="/" element={<Homepage influencer={influencer}/>} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup updateInfluencer={updateInfluencer} />} />
         <Route path='/posts' element={<PostPage />} />
         <Route path='/postform' element={<PostForm />} />
         {/* <Route path='/editpostform' element={<EditPostForm />} /> */}
         <Route path='/singlepost/:id' element={<SinglePost />} />
+        <Route path='/navbar' element={<NavBar updateInfluencer={updateInfluencer} />} />
       </Routes>
     </div>
    

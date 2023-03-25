@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -23,20 +25,58 @@ function Copyright(props) {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function SignUp({updateInfluencer}) {
+  const [formData, setFormData] = useState({ 
+    name:'',
+    bio: '', 
+    email: '', 
+    password:'', 
+
+  })
+  const [errors, setErrors] = useState([])
+  const {name, bio, email, password} = formData
+  const navigate = useNavigate()
+
+
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    const influencer = {
+      name, 
+      bio, 
+      email, 
+      password,
+    }
+
+    fetch(`/influencers`,{
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(influencer)
+    })
+    .then(res => {
+      if(res.ok){
+          res.json().then(influencer => {
+              updateInfluencer(influencer)
+              navigate('/')
+          })
+      }else {
+          res.json().then(json => setErrors(Object.entries(json.errors)))
+      }
+  })
+  }
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -58,25 +98,29 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                  autoComplete="name"
+                  name="name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="name"
+                  label="User Name"
                   autoFocus
+                  value={name}
+                  onChange={handleChange}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="bio"
+                  label="Bio"
+                  name="bio"
+                  autoComplete="bio"
+                  value={bio}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -87,6 +131,8 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={email}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -98,12 +144,8 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  value={password}
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>
@@ -117,9 +159,8 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                <Link to='/signin'>Already have an account? Sign in</Link>
+                {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
               </Grid>
             </Grid>
           </Box>
@@ -128,4 +169,5 @@ export default function SignUp() {
       </Container>
     </ThemeProvider>
   );
+
 }

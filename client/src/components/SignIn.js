@@ -36,16 +36,11 @@ export default function SignIn({updateInfluencer}) {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const [errors, setErrors] = useState([])
-  console.log(errors)
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
+
 
     fetch("/login", {
       method: "POST",
@@ -58,6 +53,8 @@ export default function SignIn({updateInfluencer}) {
       if(res.ok){
           res.json().then(influencer => {
               updateInfluencer(influencer)
+              navigate('/')
+            
           })
       }else {
           res.json().then(json => setErrors(json.errors))
@@ -65,12 +62,10 @@ export default function SignIn({updateInfluencer}) {
   })
 
   };
+
   
-
-  // .then((r => r.json()))
-  //   .then(data => console.log(data))
-
   return (
+
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -134,6 +129,7 @@ export default function SignIn({updateInfluencer}) {
               <Grid item>
                 <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
+                  {errors? <div>{errors}</div>:null}
                 </Link>
               </Grid>
             </Grid>

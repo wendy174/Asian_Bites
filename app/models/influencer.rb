@@ -5,6 +5,8 @@ class Influencer < ApplicationRecord
     has_many :posts, through: :reviews 
     has_many :favorites 
 
+    validates :name, :bio, :email, :password, presence: true
+
  
 
 end
