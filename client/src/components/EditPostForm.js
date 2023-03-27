@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect} from 'react'
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -43,6 +44,7 @@ export default function PostForm({updatePost}) {
 
     const [errors, setErrors] = useState([])
     const {id} = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(`/posts/${id}`)
@@ -69,6 +71,7 @@ export default function PostForm({updatePost}) {
     .then(res => {
         if(res.ok){
           res.json().then(updatePost)
+          navigate('/')
         } else {
           //Display errors
           res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))

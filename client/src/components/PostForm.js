@@ -13,6 +13,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect} from 'react'
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -41,6 +42,7 @@ export default function PostForm({handleNewPost}) {
   const [cusine, setCusine] = useState('')
   const [restaurant_name, setRestaurantName] = useState('')
 
+  const navigate = useNavigate()
 
   let newPost = { 
       description: description, 
@@ -63,8 +65,12 @@ export default function PostForm({handleNewPost}) {
       body: JSON.stringify(newPost)
     })
     .then((r => r.json()))
-    .then(data => console.log(data))
+    .then(data => 
+      handleNewPost(data)
+      )
   };
+
+  navigate('/')
   
 
   return (
