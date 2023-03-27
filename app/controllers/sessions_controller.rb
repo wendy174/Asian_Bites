@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: [:create]
 
   def create
         influencer = Influencer.find_by(email: params[:email])

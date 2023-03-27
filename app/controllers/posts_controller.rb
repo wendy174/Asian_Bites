@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
+    skip_before_action :authorize, only: [:index, :show]
     def index 
         posts = Post.all 
-        render json: posts
+        render json: posts, status: :ok
     end
 
     def show 
         post = Post.find(params[:id])
-        render json: post
+        render json: post, status: :ok 
     end
 
     def create 
