@@ -21,7 +21,6 @@ function App() {
   const [errors, setErrors] = useState(false)
   const [posts, setPosts] = useState([])
   
-console.log(posts)
 
   useEffect(() => {
     fetch("/me")
@@ -55,6 +54,10 @@ console.log(posts)
         setPosts(updatedPost)
     }
 
+  function handleNewPost(newPost) {
+      setPosts([...posts,newPost])
+  }
+
 
 
   // useEffect(() => { 
@@ -81,7 +84,7 @@ console.log(posts)
         {/* <Route path="/" element={<Homepage influencer={influencer}/>} /> */}
         <Route path="/signup" element={<Signup updateInfluencer={updateInfluencer} />} />
         {/* <Route path='/posts' element={<PostPage />} /> */}
-        <Route path='/postform' element={<PostForm />} />
+        <Route path='/postform' element={<PostForm handleNewPost={handleNewPost}/>} />
         <Route path='/editpostform' element={<EditPostForm />} />
         {/* <Route path='/singlepost/:id' element={<SinglePost />} /> */}
         <Route path='/navbar' element={<NavBar updateInfluencer={updateInfluencer} />} />

@@ -100,7 +100,7 @@ Post.create!(
 
 Post.create!(
     description: "take my moneyyy"  , 
-    image: "https://scontent-bos5-1.xx.fbcdn.net/v/t39.30808-6/320434327_1829266284118406_3925475484543708975_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=C3-4KSVEkM4AX-0vPTY&_nc_ht=scontent-bos5-1.xx&oh=00_AfDCq1zIm5g-VvqUEkyTAvWMBD98z4IrV0dV4Oevw-QVIg&oe=6417CAB7 " , 
+    image: "https://s3-media0.fl.yelpcdn.com/bphoto/_0h7LDtT2d1kCpXASvK4gA/348s.jpg " , 
     address: "130 West 47th Street
     New York, NY 10036 ", 
     city: "New York", 
@@ -127,7 +127,7 @@ Post.create!(
 Post.create!(
     description: "@anntremet just brought back the Chinese New Year Rabbit 🐰🧧 . It will be available until the end of April.
     Check this place out!"  , 
-    image: " https://video-iad3-2.cdninstagram.com/o1/v/t16/f1/m82/604397AF5B296698AF5C06394CCDC2B0_video_dashinit.mp4?efg=eyJ2ZW5jb2RlX3RhZyI6InZ0c192b2RfdXJsZ2VuLjcyMC5jbGlwcyJ9&_nc_ht=video-iad3-2.cdninstagram.com&_nc_cat=100&vs=1371676426965603_291245957&_nc_vs=HBksFQIYT2lnX3hwdl9yZWVsc19wZXJtYW5lbnRfcHJvZC82MDQzOTdBRjVCMjk2Njk4QUY1QzA2Mzk0Q0NEQzJCMF92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVABgkR0RFc0JoVEVmaHg4dTZNRUFOWGZ3cTFXdzJzb2JxX0VBQUFGFQICyAEAKAAYABsBiAd1c2Vfb2lsATEVAAAmhsTu5Y%2FxzT8VAigCQzMsF0AxyXjU%2FfO2GBJkYXNoX2Jhc2VsaW5lXzFfdjERAHUAAA%3D%3D&ccb=9-4&oh=00_AfBbenEpT-HcL8JWlDPm-yBJ8AaEh7WR4oWLq47hGF3BNA&oe=6415736F&_nc_sid=ea0b6e&_nc_rid=21b4ee6f8d" , 
+    image: " https://s3-media0.fl.yelpcdn.com/bphoto/3vv3jeEB_32FsQ-nXF63oQ/348s.jpg" , 
     address: " 47 8th Avenue, New York, NY 10014", 
     city: "New York", 
     state: "NY", 
@@ -160,8 +160,8 @@ Post.create!(
     city: "Mapo-gu", 
     state: "Seoul", 
     cusine: "Cute",
-    restaurant_name: "Sanrio Lovers Club", 
-    influencer_id:  I3.id
+    restaurant_name: "Sanrio Lovers Club"
+    # influencer_id:  I3.id
 )
 
 

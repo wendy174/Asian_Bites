@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
 
     def authorize 
         @current_influencer = Influencer.find_by(id: session[:influencer_id])
-        render json: {errors: 'Not authorized'}, status: :unauthorized unless @current_influencer 
+        render json: {errors: 'Not authorized. Please Login First'}, status: :unauthorized unless @current_influencer 
     end
 
 end
