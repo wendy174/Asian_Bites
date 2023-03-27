@@ -3,12 +3,12 @@ import PostCard from "./PostCard";
 import './PostList.css'
 
 
-function PostList({posts, handleDeletePost, review}) { 
+function PostList({posts, handleDeletePost}) { 
 
-
+  if (!posts){posts=[]}
     return (
     <ul className="post-card-container">
-      {posts.map(post => <PostCard key={post.id} post={post} handleDeletePost={handleDeletePost}/>)}
+    {posts.map(post => <PostCard key={post.id} post={post} handleDeletePost={handleDeletePost}/>)}
     </ul>
 
     )

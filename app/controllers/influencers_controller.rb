@@ -1,5 +1,5 @@
 class InfluencersController < ApplicationController
-    # skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: :create
     ## not working, authorize is acting on all methods 
 
     def index 

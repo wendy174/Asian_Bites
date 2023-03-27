@@ -23,7 +23,8 @@ function NavBar({influencer, updateInfluencer}) {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              Asian Bites {influencer.name}
+              Asian Bites 
+              {influencer.name}
             </Typography>
             <Button color="inherit" component={Link} to="/">
               Home

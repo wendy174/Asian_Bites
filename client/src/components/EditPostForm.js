@@ -1,62 +1,198 @@
-// import useState from 'react'
-
-// function EditPostForm({ post, onSubmit }) {
-//     const [formData, setFormData] = useState({
-//     //   restaurant_name: post.restaurant_name,
-//     //   city: post.city,
-//     //   state: post.state,
-//     //   description: post.description,
-//     //   image: post.image,
-//     //   address: post.address,
-//     //   cusine: post.cusine
-//     });
-  
-//     const handleChange = (event) => {
-//       setFormData({
-//         ...formData,
-//         [event.target.name]: event.target.value
-//       });
-//     };
-  
-//     const handleSubmit = (event) => {
-//       event.preventDefault();
-//       onSubmit(formData);
-//     };
-  
-//     return (
-//       <form onSubmit={handleSubmit}>
-//         <label>
-//           Restaurant Name:
-//           <input type="text" name="restaurant_name" value={formData.restaurant_name} onChange={handleChange} />
-//         </label>
-//         <label>
-//           City:
-//           <input type="text" name="city" value={formData.city} onChange={handleChange} />
-//         </label>
-//         <label>
-//           State:
-//           <input type="text" name="state" value={formData.state} onChange={handleChange} />
-//         </label>
-//         <label>
-//           Description:
-//           <textarea name="description" value={formData.description} onChange={handleChange} />
-//         </label>
-//         <label>
-//           Image:
-//           <input type="text" name="image" value={formData.image} onChange={handleChange} />
-//         </label>
-//         <label>
-//           Address:
-//           <input type="text" name="address" value={formData.address} onChange={handleChange} />
-//         </label>
-//         <label>
-//           Cuisine:
-//           <input type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} />
-//         </label>
-//         <button type="submit">Save Changes</button>
-//       </form>
-//     );
-//   }
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState, useEffect} from 'react'
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import { useParams } from 'react-router-dom'
 
 
-// export default EditPostForm 
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+
+const theme = createTheme();
+
+export default function PostForm({updatePost}) {
+    const [formData, setFormData] = useState({
+        description:'', 
+        image: '', 
+        address: '', 
+        city:'', 
+        state:'', 
+        cusine:'', 
+        restaurant_name:''    
+    }) 
+
+    const [errors, setErrors] = useState([])
+    const {id} = useParams()
+
+    useEffect(() => {
+        fetch(`/posts/${id}`)
+        .then(res => res.json())
+        .then(setFormData)
+      },[])
+    
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+    }
+    
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    fetch('/posts/${id}', {
+      method: "PATCH",
+      headers: {
+      "Content-Type": "application/json",
+    },
+      body: JSON.stringify(formData)
+    })
+    .then(res => {
+        if(res.ok){
+          res.json().then(updatePost)
+        } else {
+          //Display errors
+          res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+        }
+      })
+    }
+  
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <PostAddIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Share some awesome food! 
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="restaurant"
+              label="Restaurant Name"
+              type="restaurant"
+              id="restaurant" 
+              autoComplete="current-restaurant"
+              value={formData.restaurant_name}
+              onChange={handleChange}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="description"
+              label="Description"
+              name="description"
+              autoComplete="current-description"
+              autoFocus
+              value={formData.description}
+              onChange={handleChange}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="image"
+              label="Image Url"
+              id="image"
+              autoComplete="current-image"
+              autoFocus
+              value={formData.image}
+              onChange={handleChange}
+    
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="address"
+              label="Address"
+              type="address"
+              id="address"
+              autoComplete="current-address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="city"
+              label="City"
+              type="city"
+              id="city"
+              autoComplete="current-city"
+              value={formData.city}
+              onChange={handleChange}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="state"
+              label="State"
+              type="state"
+              id="state"
+              autoComplete="current-state"
+              value={formData.state}
+              onChange={handleChange}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="cuisine"
+              label="Cuisine"
+              type="cuisine"
+              id="cuisine"
+              autoComplete="current-cuisine"
+              value={formData.cusine}
+              onChange={handleChange}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Submit Post
+            </Button>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
+  );
+}

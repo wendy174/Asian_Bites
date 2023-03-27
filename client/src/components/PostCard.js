@@ -41,8 +41,8 @@ function PostCard({post, handleDeletePost}) {
   const handleDelete = () => { 
     fetch(`/posts/${post.id}`, {
     method: "DELETE",
-  }).then((r) => r.json())
-    .then(deletedPost => handleDeletePost(deletedPost));
+  })
+    .then(() => handleDeletePost(post));
   }
 
 
@@ -51,7 +51,7 @@ function PostCard({post, handleDeletePost}) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            A
           </Avatar>
         }
         action={

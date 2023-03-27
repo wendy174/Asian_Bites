@@ -10,6 +10,7 @@ import Homepage from "./Homepage"
 import PostForm from './PostForm'
 import EditPostForm from './EditPostForm'
 import SinglePost from './SinglePost'
+import PostList from './PostList'
 
 
 
@@ -17,15 +18,56 @@ import SinglePost from './SinglePost'
 
 function App() {
   const [influencer, setCurrentInfluencer] = useState('')
+  const [errors, setErrors] = useState(false)
+  const [posts, setPosts] = useState([])
   
-  console.log(influencer)
+console.log(posts)
 
-  // fetch who is current user that is login 
-  useEffect(() => { 
-    fetch('/me')
-    .then(r => r.json())
-    .then(setCurrentInfluencer)
-  }, []) 
+  useEffect(() => {
+    fetch("/me")
+    .then((res) => {
+      if (res.ok) {
+        res.json()
+        .then((influencer) => {
+          updateInfluencer(influencer);
+        });
+      }
+    })
+  },[])
+
+  useEffect(() => {fetchPosts()},[]) 
+  
+  
+  const fetchPosts = () => {
+    fetch('/posts')
+    .then(res => {
+      if(res.ok){
+        return res.json()
+      }else {
+        res.json().then(data => setErrors(data.error))
+      }
+    })
+    .then(setPosts)
+  }
+
+   function handleDeletePost(deletedPost) {
+        const updatedPost = posts.filter(post => post.id !== deletedPost.id); 
+        setPosts(updatedPost)
+    }
+
+
+
+  // useEffect(() => { 
+  //   fetch('/me')
+  //   .then(r => r.json())
+  //   .then(setCurrentInfluencer); 
+  // }, []) 
+
+  // useEffect(() => {
+  //   fetch("/posts")
+  //     .then(resp => resp.json())
+  //     .then(items => setPosts(items)) // are getting the post 
+  // }, [])
 
   // gets current influencer 
   const updateInfluencer = (influencer) => setCurrentInfluencer(influencer)
@@ -36,13 +78,14 @@ function App() {
       <NavBar influencer={influencer}/>
       <Routes>
         <Route path="/signin" element={<SignIn updateInfluencer={updateInfluencer}/>} />
-        <Route path="/" element={<Homepage influencer={influencer}/>} />
+        {/* <Route path="/" element={<Homepage influencer={influencer}/>} /> */}
         <Route path="/signup" element={<Signup updateInfluencer={updateInfluencer} />} />
-        <Route path='/posts' element={<PostPage />} />
+        {/* <Route path='/posts' element={<PostPage />} /> */}
         <Route path='/postform' element={<PostForm />} />
-        {/* <Route path='/editpostform' element={<EditPostForm />} /> */}
-        <Route path='/singlepost/:id' element={<SinglePost />} />
+        <Route path='/editpostform' element={<EditPostForm />} />
+        {/* <Route path='/singlepost/:id' element={<SinglePost />} /> */}
         <Route path='/navbar' element={<NavBar updateInfluencer={updateInfluencer} />} />
+        <Route path='/' element={<PostList posts={posts} handleDeletePost={handleDeletePost}/>} />
       </Routes>
     </div>
    
