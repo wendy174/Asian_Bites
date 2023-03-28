@@ -61,7 +61,7 @@ export default function PostForm({updatePost}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    fetch('/posts/${id}', {
+    fetch(`/posts/${id}`, {
       method: "PATCH",
       headers: {
       "Content-Type": "application/json",
@@ -190,7 +190,7 @@ export default function PostForm({updatePost}) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Submit Post
+              Submit 
             </Button>
           </Box>
         </Box>
