@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 import './PostCard.css'
+import {Link} from 'react-router-dom'
 
 
 const ExpandMore = styled((props) => {
@@ -32,6 +33,9 @@ const ExpandMore = styled((props) => {
 
 function PostCard({post, handleDeletePost}) { 
   const [expanded, setExpanded] = React.useState(false);
+
+  console.log(post.reviews)
+
 
 
   const handleExpandClick = () => {
@@ -61,12 +65,14 @@ function PostCard({post, handleDeletePost}) {
         }
         Restaurant={post.restaurant_name}
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image={post.image}
-        alt={post.restaurant_name}
-      />
+      <Link to={`/posts/${post.id}`}>
+        <CardMedia
+          component="img"
+          height="194"
+          image={post.image}
+          alt={post.restaurant_name}
+        />
+      </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           <h3>{post.restaurant_name}</h3>
@@ -100,10 +106,11 @@ function PostCard({post, handleDeletePost}) {
           <Typography paragraph>
             <p>Address: {post.address}</p>
             <p>Cuisine: {post.cusine} </p>
+            <p>Reviews:</p>
             <ul> 
               {post.reviews.map((review) => 
                 <li> 
-                  Reviews: {review.comment}
+                  {review.comment}
                 </li>)}
             </ul>
           </Typography>
@@ -113,27 +120,7 @@ function PostCard({post, handleDeletePost}) {
   );
 }
     
-
-    
-
-
 export default PostCard; 
 
 
 
-
-
-
-
-
-
-
-// return (
-//     <li className="card">
-//       <img src={post.image} alt={post.name} />
-//       <h4>Restaurant: {post.restaurant_name}</h4>
-//       <p>{post.address}</p>
-//       <p>{post.description}</p>
-//     </li>
-//     )
-// }

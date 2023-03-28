@@ -1,11 +1,14 @@
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 function NavBar({influencer, updateInfluencer}) {
+
+  const navigate = useNavigate()
 
   const handleLogOut = () => { 
     fetch('/logout', { 
@@ -13,11 +16,13 @@ function NavBar({influencer, updateInfluencer}) {
     })
     .then(res => { 
       if(res.ok) { 
-        updateInfluencer(null)
-
+        updateInfluencer(null);
       }
     })
+    navigate('/signin')
   }
+
+  
 
     return (
         <AppBar position="static">
