@@ -10,6 +10,7 @@ import SinglePost from './SinglePost'
 import PostList from './PostList'
 
 
+
 function App() {
   const [influencer, setCurrentInfluencer] = useState('')
   const [errors, setErrors] = useState(false)
@@ -67,19 +68,20 @@ function App() {
 
 
   // gets current influencer 
-  const updateInfluencer = (influencer) => setCurrentInfluencer(influencer)
+function updateInfluencer(influencer) {
+    setCurrentInfluencer(influencer)
+  }
   
   return (
 
     <div>
-      <NavBar influencer={influencer}/>
+      <NavBar influencer={influencer} updateInfluencer={updateInfluencer}/>
       <Routes>
         <Route path="/signin" element={<SignIn updateInfluencer={updateInfluencer}/>} />
         <Route path="/signup" element={<Signup updateInfluencer={updateInfluencer} />} />
         <Route path='/postform' element={<PostForm handleNewPost={handleNewPost}/>} />
         <Route path='/posts/:id/edit' element={<EditPostForm updatePost={updatePost} />} />
         <Route path='/posts/:id' element={<SinglePost />} />
-        <Route path='/navbar' element={<NavBar updateInfluencer={updateInfluencer} />} />
         <Route path='/' element={<PostList posts={posts} handleDeletePost={handleDeletePost}/>} />
       </Routes>
     </div>
