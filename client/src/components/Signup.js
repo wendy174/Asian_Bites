@@ -64,13 +64,15 @@ export default function SignUp({updateInfluencer}) {
       if(res.ok){
           res.json().then(influencer => {
               updateInfluencer(influencer)
-              // navigate('/')
+              navigate('/')
           })
       }else {
-          res.json().then(json => setErrors(Object.entries(json.errors)))
+          res.json().then(json => setErrors(json.errors))
       }
   })
   }
+
+  console.log(errors)
 
 
   const handleChange = (e) => {
@@ -96,6 +98,11 @@ export default function SignUp({updateInfluencer}) {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
+          <Typography component="h3" variant="h6" style={{ color: 'purple', textAlign: 'center'}}>
+            {/* {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null} */}
+            {/* {errors? <div>{errors}</div>:null} */}
+            {errors.map((err) => <div>{err}</div> )}
+            </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -160,7 +167,7 @@ export default function SignUp({updateInfluencer}) {
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link to='/signin'>Already have an account? Sign in</Link>
-                {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
+                
               </Grid>
             </Grid>
           </Box>
