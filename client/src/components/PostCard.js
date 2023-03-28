@@ -89,7 +89,7 @@ function PostCard({post, handleDeletePost}) {
         </IconButton>
         <CardActions sx={{ml: 'auto'}}>
           <Button onClick={handleDelete}>Delete</Button>
-          <Button>Edit</Button>
+          <Button><Link to={`/posts/${post.id}/edit`}>Edit</Link></Button>
         </CardActions>
     
         <ExpandMore
