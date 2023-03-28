@@ -43,6 +43,7 @@ export default function PostForm({handleNewPost}) {
   const [restaurant_name, setRestaurantName] = useState('')
 
   const navigate = useNavigate()
+  const [errors, setErrors] = useState([])
 
   let newPost = { 
       description: description, 
@@ -57,20 +58,45 @@ export default function PostForm({handleNewPost}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    fetch("/posts", {
-      method: "POST",
-      headers: {
-      "Content-Type": "application/json",
-    },
-      body: JSON.stringify(newPost)
-    })
-    .then((r => r.json()))
-    .then(data => 
-      handleNewPost(data)
-      )
-  };
+  //   fetch("/posts", {
+  //     method: "POST",
+  //     headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //     body: JSON.stringify(newPost)
+  //   })
+  //   .then((r => r.json()))
+  //   .then(data => 
+  //     handleNewPost(data)
+  //     )
+  // };
 
-  navigate('/')
+
+  fetch("/posts", {
+    method: "POST",
+    headers: {
+    "Content-Type": "application/json",
+  },
+    body: JSON.stringify(newPost)
+  })
+  .then((r => {
+    if(r.ok){
+      r.json().then(handleNewPost); 
+      navigate('/')
+    } else {
+      //Display errors
+      r.json().then(json => setErrors(json.errors))
+    }
+  })
+  )
+
+  console.log(errors)
+
+
+}
+
+
+
   
 
   return (
@@ -90,6 +116,11 @@ export default function PostForm({handleNewPost}) {
           </Avatar>
           <Typography component="h1" variant="h5">
             Share some awesome food! 
+          <br></br>
+          <br></br>
+          </Typography>
+          <Typography component="h3" variant="h6" style={{ color: 'purple', textAlign: 'center'}}>
+            {errors?errors.map(e => <div>{e}</div>):null}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField

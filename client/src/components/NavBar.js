@@ -24,31 +24,46 @@ function NavBar({influencer, updateInfluencer}) {
 
   
 
-    return (
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              Asian Bites 
-              {influencer.name}
-            </Typography>
-            <Button color="inherit" component={Link} to="/">
-              Home
-            </Button>
-            <Button color="inherit" component={Link} to="/signin">
-              Sign In
-            </Button>
-            <Button color="inherit" component={Link} to="/signup">
-              Sign Up
-            </Button>
-            <Button color="inherit" onClick={handleLogOut}>
-              Log out 
-            </Button>
-            <Button color="inherit" component={Link} to="/postform">
-              Add Post 
-            </Button>
-          </Toolbar>
-        </AppBar>
-      );
+  console.log(influencer)
+
+  
+
+  
+
+  const handleUserName = () => {
+    if (influencer === null) {
+      return 'Welcome Guest';
+    } else {
+      return influencer.name
+    }
+  }
+
+
+
+  return (
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Asian Bites {handleUserName()}
+          </Typography>
+          <Button color="inherit" component={Link} to="/">
+            Home
+          </Button>
+          <Button color="inherit" component={Link} to="/signin">
+            Sign In
+          </Button>
+          <Button color="inherit" component={Link} to="/signup">
+            Sign Up
+          </Button>
+          <Button color="inherit" onClick={handleLogOut}>
+            Log out 
+          </Button>
+          <Button color="inherit" component={Link} to="/postform">
+            Add Post 
+          </Button>
+        </Toolbar>
+      </AppBar>
+    );
 
 
 }

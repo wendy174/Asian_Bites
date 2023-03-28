@@ -17,6 +17,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 import './PostCard.css'
 import {Link} from 'react-router-dom'
+import Grid from '@mui/material/Grid'
 
 
 const ExpandMore = styled((props) => {
@@ -34,7 +35,6 @@ const ExpandMore = styled((props) => {
 function PostCard({post, handleDeletePost}) { 
   const [expanded, setExpanded] = React.useState(false);
 
-  console.log(post.reviews)
 
 
 
@@ -50,73 +50,81 @@ function PostCard({post, handleDeletePost}) {
   }
 
 
+
+
   return (
-<Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            A
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        Restaurant={post.restaurant_name}
-      />
-      <Link to={`/posts/${post.id}`}>
-        <CardMedia
-          component="img"
-          height="194"
-          image={post.image}
-          alt={post.restaurant_name}
-        />
-      </Link>
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          <h3>{post.restaurant_name}</h3>
-          {post.city}, {post.state}
-          <p>{post.description} </p>
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <CardActions sx={{ml: 'auto'}}>
-          <Button onClick={handleDelete}>Delete</Button>
-          <Button><Link to={`/posts/${post.id}/edit`}>Edit</Link></Button>
-        </CardActions>
-    
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>
-            <p>Address: {post.address}</p>
-            <p>Cuisine: {post.cusine} </p>
-            <p>Reviews:</p>
-            <ul> 
-              {post.reviews.map((review) => 
-                <li> 
-                  {review.comment}
-                </li>)}
-            </ul>
-          </Typography>
-        </CardContent>
-      </Collapse>
-</Card>
+   <Grid container spacing={2}> 
+      <Grid item xs={12} sm={6} md={4}>
+        <Card sx={{ maxWidth: 345 }} variant='outlined' >
+              <CardHeader
+                avatar={
+                  <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                    A
+                  </Avatar>
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                Restaurant={post.restaurant_name}
+              />
+              <Link to={`/posts/${post.id}`}>
+                <CardMedia
+                  component="img"
+                  height="194"
+                  image={post.image}
+                  alt={post.restaurant_name}
+                />
+              </Link>
+              <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                  <h3>{post.restaurant_name}</h3>
+                  {post.city}, {post.state}
+                  <p>{post.description} </p>
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <CardActions sx={{ml: 'auto'}}>
+                  <Button onClick={handleDelete}>Delete</Button>
+                  <Button><Link to={`/posts/${post.id}/edit`}>Edit</Link></Button>
+                </CardActions>
+            
+                <ExpandMore
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </ExpandMore>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>
+                    <p>Address: {post.address}</p>
+                    <p>Cuisine: {post.cusine} </p>
+                    <p>Reviews:</p>
+                    <ul> 
+                      {post.reviews.map((review) => 
+                        <li> 
+                          {review.comment}
+                        </li>)}
+                    </ul>
+                  </Typography>
+                </CardContent>
+              </Collapse>
+        </Card>
+      </Grid>
+    </Grid>
+
+
   );
 }
     

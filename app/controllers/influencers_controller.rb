@@ -13,8 +13,8 @@ class InfluencersController < ApplicationController
     end
 
     def create # signup 
-        influencer = Influencer.create(influencer_params)
-        session[:influencer_id] = influencer
+        influencer = Influencer.create!(influencer_params)
+        session[:influencer_id] = influencer.id
         render json: influencer, status: :created 
 
     end

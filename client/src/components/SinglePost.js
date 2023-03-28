@@ -17,7 +17,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 import './PostCard.css'
 import { useState, useEffect } from "react";
-import  { Link, useParams } from 'react-router-dom'
+import  { useParams } from 'react-router-dom'
 
 
 
@@ -35,7 +35,7 @@ const ExpandMore = styled((props) => {
 
 function SinglePost() { 
   const [expanded, setExpanded] = React.useState(false);
-  const [post, setPost] = useState({})
+  const [post, setPost] = useState({reviews:[]})
   const [errors, setErrors] = useState(false)
   const params = useParams()
 
@@ -49,6 +49,7 @@ function SinglePost() {
       if(res.ok){
         res.json().then(data => {
           setPost(data)
+          console.log(data)
         })
       } else {
         res.json().then(data => setErrors(data.error))
@@ -56,20 +57,19 @@ function SinglePost() {
     })
   },[])
 
-  console.log(post.reviews)
 
 
-//   const handleReviews = () => {
-//     if (post.reviews === []) {
-//       return 'No Reviews Yet';
-//     } else {
-//       return post.reviews.map((review) => (
-//         <li>
-//           Reviews: {review.comment}
-//         </li>
-//       ));
-//     }
-//   };
+  // const handleReviews = () => {
+  //   if (post.reviews === null) {
+  //     return 'No Reviews Yet';
+  //   } else {
+  //     return post.reviews.map((review) => (
+  //       <li>
+  //         Reviews: {review.comment}
+  //       </li>
+  //     ));
+  //   }
+  // };
   
 
 //   const handleDelete = () => { 
@@ -134,12 +134,14 @@ function SinglePost() {
           <Typography paragraph>
             <p>Address: {post.address}</p>
             <p>Cuisine: {post.cusine}</p>
-            {/* <ul> 
+            {/* {handleReviews()} */}
+
+            <ul> 
               {post.reviews.map((review) => 
                 <li> 
                   {review.comment}
                 </li>)}
-            </ul> */}
+            </ul>
           </Typography>
         </CardContent>
       </Collapse>
