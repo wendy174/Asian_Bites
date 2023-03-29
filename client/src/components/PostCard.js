@@ -21,6 +21,7 @@ import Grid from '@mui/material/Grid'
 
 
 
+
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -32,12 +33,13 @@ const ExpandMore = styled((props) => {
     }),
   }));
 
+ 
+  
+
 
 function PostCard({post, handleDeletePost}) { 
   const [expanded, setExpanded] = React.useState(false);
-
-
-
+  
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -51,11 +53,8 @@ function PostCard({post, handleDeletePost}) {
   }
 
 
-
-
   return (
-    <Grid container spacing={2}>
-      <Grid xs={8}>
+
         <Card sx={{ maxWidth: 345 }} variant='outlined'  >
               <CardHeader
                 avatar={
@@ -73,16 +72,20 @@ function PostCard({post, handleDeletePost}) {
               <Link to={`/posts/${post.id}`}>
                 <CardMedia
                   component="img"
-                  height="194"
+                  height="300"
                   image={post.image}
                   alt={post.restaurant_name}
+                  sx={{ objectFit: "contain" }}
                 />
               </Link>
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
                   <h3>{post.restaurant_name}</h3>
                   {post.city}, {post.state}
-                  <p>{post.description} </p>
+                  <p style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {post.description} 
+                  </p>
+                  {/* <p>{post.description} </p> */}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
@@ -122,8 +125,7 @@ function PostCard({post, handleDeletePost}) {
                 </CardContent>
               </Collapse>
         </Card>
-      </Grid>
-    </Grid>
+     
   
      
 

@@ -81,71 +81,73 @@ function SinglePost() {
 
 
   return (
-<Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            A
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        Restaurant={post.restaurant_name}
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={post.image}
-        alt={post.restaurant_name}
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          <h3>{post.restaurant_name}</h3>
-          {post.city}, {post.state}
-          <p>{post.description} </p>
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <CardActions sx={{ml: 'auto'}}>
-          <Button >Delete</Button>
-          <Button>Edit</Button>
-        </CardActions>
-    
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>
-            <p>Address: {post.address}</p>
-            <p>Cuisine: {post.cusine}</p>
-            {/* {handleReviews()} */}
 
-            <ul> 
-              {post.reviews.map((review) => 
-                <li> 
-                  {review.comment}
-                </li>)}
-            </ul>
+  <Card sx={{ maxWidth: 345 }} justifyContent="center">
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              A
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          Restaurant={post.restaurant_name}
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image={post.image}
+          alt={post.restaurant_name}
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            <h3>{post.restaurant_name}</h3>
+            {post.city}, {post.state}
+            <p>{post.description} </p>
           </Typography>
         </CardContent>
-      </Collapse>
-</Card>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <CardActions sx={{ml: 'auto'}}>
+            <Button >Delete</Button>
+            <Button>Edit</Button>
+          </CardActions>
+      
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>
+              <p>Address: {post.address}</p>
+              <p>Cuisine: {post.cusine}</p>
+              {/* {handleReviews()} */}
+
+              <ul> 
+                {post.reviews.map((review) => 
+                  <li> 
+                    {review.comment}
+                  </li>)}
+              </ul>
+            </Typography>
+          </CardContent>
+        </Collapse>
+  </Card>
+
   );
 }
     
