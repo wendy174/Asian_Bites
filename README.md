@@ -1,24 +1,10 @@
-# README
+Asian bites is a comprehensive platform with top rated restaurants recommended by various users. Whether you’re looking for a Korean fried chicken or adobo, Asian Bites has you covered.
+Thing of Asian Bites as Instagram for asian food.  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To get started download dependencies: 
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Features to still build out: 
+-Using google maps to pin all food places 
+-Create Restaurant model 
+-Using LocalStorage to contain user Avatar 

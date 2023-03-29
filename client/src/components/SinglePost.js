@@ -141,7 +141,7 @@ function SinglePost() {
                   <ul> 
                     {post.reviews.map((review) => 
                       <li> 
-                        {review.comment}
+                        Review: {review.comment}
                       </li>)}
                   </ul>
                 </Typography>

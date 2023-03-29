@@ -96,7 +96,7 @@ export default function PostForm({updatePost}) {
             <PostAddIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Edit this pos
+            Edit this post
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
