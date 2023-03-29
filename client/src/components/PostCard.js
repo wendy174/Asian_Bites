@@ -111,7 +111,7 @@ function PostCard({post, handleDeletePost}) {
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                  <Typography paragraph>
+                  <Typography variant="body2" color="text.secondary">>
                     <p>Address: {post.address}</p>
                     <p>Cuisine: {post.cusine} </p>
                     <p>Reviews:</p>
