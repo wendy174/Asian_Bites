@@ -41,7 +41,7 @@ function NavBar({influencer, updateInfluencer}) {
 
 
   return (
-      <AppBar position="static">
+      <AppBar position="fixed" sx={{ backgroundColor: '#F5313' }}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Asian Bites {handleUserName()}
