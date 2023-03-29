@@ -15,9 +15,10 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
-import './PostCard.css'
+// import './PostCard.css'
 import {Link} from 'react-router-dom'
 import Grid from '@mui/material/Grid'
+
 
 
 const ExpandMore = styled((props) => {
@@ -53,9 +54,9 @@ function PostCard({post, handleDeletePost}) {
 
 
   return (
-   <Grid container spacing={2}> 
-      <Grid item xs={12} sm={6} md={4}>
-        <Card sx={{ maxWidth: 345 }} variant='outlined' >
+    <Grid container spacing={2}>
+      <Grid xs={8}>
+        <Card sx={{ maxWidth: 345 }} variant='outlined'  >
               <CardHeader
                 avatar={
                   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -123,6 +124,8 @@ function PostCard({post, handleDeletePost}) {
         </Card>
       </Grid>
     </Grid>
+  
+     
 
 
   );
