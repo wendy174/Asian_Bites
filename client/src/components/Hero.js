@@ -33,7 +33,7 @@ export default function ProductHero() {
         variant="h5"
         sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
       >
-        Asian bites is a comprehensive platform with top rated restaurants recommended by various users. Whether you’re looking for a Korean fried chicken or adobo, Asian Bites has you covered.
+        Looking for a comprehensive guide to Asian food that puts the power of choice in your hands? Look no further than our app - a one-of-a-kind platform that curates the very best restaurants serving up authentic Asian cuisine. With a focus on user engagement and feedback, our app is the ultimate resource for exploring new flavors and discovering hidden gems, as recommended by a diverse community of food enthusiasts. Whether you're in the mood for soup dumplings or Korean fried chicken, our app is your go-to source for delicious Asian eats, with real-time reviews and ratings from fellow foodies. Join us today and start exploring the vibrant and mouth-watering world of Asian cuisine!
       </Typography>
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
         Discover the experience
