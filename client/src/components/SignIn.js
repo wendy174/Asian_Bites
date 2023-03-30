@@ -55,7 +55,7 @@ export default function SignIn({updateInfluencer}) {
       if(res.ok){
           res.json().then(influencer => {
               updateInfluencer(influencer)
-              navigate('/')
+              navigate('/postlist')
             
           })
       }else {

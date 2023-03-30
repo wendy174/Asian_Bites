@@ -32,7 +32,7 @@ function NavBar({influencer, updateInfluencer}) {
 
   const handleUserName = () => {
     if (influencer === null) {
-      return 'Welcome Guest';
+      return 'Guest';
     } else {
       return influencer.name
     }
@@ -41,13 +41,16 @@ function NavBar({influencer, updateInfluencer}) {
 
 
   return (
-      <AppBar position="fixed" sx={{ backgroundColor: '#F5313' }}>
+      <AppBar position="fixed" sx={{ backgroundColor: '#9500ae' }}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Asian Bites {handleUserName()}
+            Welcome {handleUserName()}
           </Typography>
           <Button color="inherit" component={Link} to="/">
             Home
+          </Button>
+          <Button color="inherit" component={Link} to="/postlist">
+            Posts
           </Button>
           <Button color="inherit" component={Link} to="/signin">
             Sign In
