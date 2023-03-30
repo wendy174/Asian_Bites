@@ -8,6 +8,8 @@ import PostForm from './PostForm'
 import EditPostForm from './EditPostForm'
 import SinglePost from './SinglePost'
 import PostList from './PostList'
+import Hero from './Hero'
+import Layout from './Layout'
 
 
 
@@ -77,15 +79,16 @@ function updateInfluencer(influencer) {
   return (
 
     <div>
-      <NavBar influencer={influencer} updateInfluencer={updateInfluencer}/>
-      <Routes>
-        <Route path="/signin" element={<SignIn updateInfluencer={updateInfluencer}/>} />
-        <Route path="/signup" element={<Signup updateInfluencer={updateInfluencer} />} />
-        <Route path='/postform' element={<PostForm handleNewPost={handleNewPost}/>} />
-        <Route path='/posts/:id/edit' element={<EditPostForm updatePost={updatePost} />} />
-        <Route path='/posts/:id' element={<SinglePost />} />
-        <Route path='/' element={<PostList posts={posts} handleDeletePost={handleDeletePost}/>} />
-      </Routes>
+        <NavBar influencer={influencer} updateInfluencer={updateInfluencer}/>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/signin" element={<SignIn updateInfluencer={updateInfluencer}/>} />
+          <Route path="/signup" element={<Signup updateInfluencer={updateInfluencer} />} />
+          <Route path='/postform' element={<PostForm handleNewPost={handleNewPost}/>} />
+          <Route path='/posts/:id/edit' element={<EditPostForm updatePost={updatePost} />} />
+          <Route path='/posts/:id' element={<SinglePost />} />
+          <Route path='/postlist' element={<PostList posts={posts} handleDeletePost={handleDeletePost}/>} />
+        </Routes>
     </div>
    
   );

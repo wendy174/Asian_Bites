@@ -64,7 +64,7 @@ export default function SignUp({updateInfluencer}) {
       if(res.ok){
           res.json().then(influencer => {
               updateInfluencer(influencer)
-              navigate('/')
+              navigate('/postlist')
           })
       }else {
           res.json().then(json => setErrors(json.errors))
