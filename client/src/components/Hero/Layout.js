@@ -1,11 +1,11 @@
 import React from 'react';
-import HeroImage from './HeroImage.jpeg'
+import ChinatownImage from './ChinatownImage.jpeg'
 
 const Layout = ({ children }) => {
   return (
     <div
       style={{
-        backgroundImage: `url(${HeroImage})`,
+        backgroundImage: `url(${ChinatownImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         minHeight: '100vh',

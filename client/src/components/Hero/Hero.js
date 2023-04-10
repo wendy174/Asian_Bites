@@ -1,18 +1,15 @@
 import * as React from 'react';
-import Typography from '../components/Typography';
+import Typography from './Typography';
 import ProductHeroLayout from './ProductHeroLayout';
-import HeroImage from './HeroImage.jpeg'
 import Button from '@mui/material/Button';
-import { useNavigate, Link } from "react-router-dom";
-
-const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400';
+import { Link } from "react-router-dom";
+import ChinatownImage from './ChinatownImage.jpeg'
 
 export default function ProductHero() {
   return (
     <ProductHeroLayout
       sxBackground={{
-        backgroundImage: `url(${HeroImage})`,
+        backgroundImage: `url(${ChinatownImage})`,
         backgroundColor: '#7fc7d9', // Average color of the background image.
         backgroundPosition: 'center',
         height: '100vh'
@@ -21,10 +18,12 @@ export default function ProductHero() {
       {/* Increase the network loading priority of the background image. */}
       <img
         style={{ display: 'none' }}
-        src={HeroImage}
+        src={ChinatownImage}
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2" marked="center">
+        <br></br>
+        <br></br>
         Asian Bites 
       </Typography>
       <Typography

@@ -15,11 +15,8 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
-import './PostCard.css'
 import { useState, useEffect } from "react";
 import  { useParams } from 'react-router-dom'
-import Grid from '@mui/material/Grid'
-
 
 
 const ExpandMore = styled((props) => {
@@ -57,28 +54,6 @@ function SinglePost() {
       }
     })
   },[])
-
-
-
-  // const handleReviews = () => {
-  //   if (post.reviews === null) {
-  //     return 'No Reviews Yet';
-  //   } else {
-  //     return post.reviews.map((review) => (
-  //       <li>
-  //         Reviews: {review.comment}
-  //       </li>
-  //     ));
-  //   }
-  // };
-  
-
-//   const handleDelete = () => { 
-//     fetch(`/posts/${post.id}`, {
-//     method: "DELETE",
-//   })
-//     .then(() => console.log(post));
-//   }
 
 
   return (
@@ -152,9 +127,6 @@ function SinglePost() {
 
   );
 }
-    
-
-    
 
 
 export default SinglePost; 

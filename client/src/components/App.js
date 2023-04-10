@@ -8,8 +8,7 @@ import PostForm from './PostForm'
 import EditPostForm from './EditPostForm'
 import SinglePost from './SinglePost'
 import PostList from './PostList'
-import Hero from './Hero'
-import Layout from './Layout'
+import Hero from './Hero/Hero'
 
 
 
