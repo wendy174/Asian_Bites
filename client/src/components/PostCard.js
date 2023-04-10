@@ -12,17 +12,13 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
-// import './PostCard.css'
 import {Link} from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 import {useState} from 'react'
-
-
 
 
 const ExpandMore = styled((props) => {
@@ -37,8 +33,6 @@ const ExpandMore = styled((props) => {
   }));
 
  
-  
-
 
 function PostCard({post, handleDeletePost}) { 
   const [expanded, setExpanded] = React.useState(false);
@@ -58,8 +52,6 @@ function PostCard({post, handleDeletePost}) {
   const handleLiked = () => {
     setIsLiked(!isLiked);
   };
-
-
 
   return (
       

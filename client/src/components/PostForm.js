@@ -82,7 +82,7 @@ export default function PostForm({handleNewPost}) {
   .then((r => {
     if(r.ok){
       r.json().then(handleNewPost); 
-      navigate('/')
+      navigate('/postlist')
     } else {
       //Display errors
       r.json().then(json => setErrors(json.errors))
@@ -90,14 +90,7 @@ export default function PostForm({handleNewPost}) {
   })
   )
 
-  console.log(errors)
-
-
 }
-
-
-
-  
 
   return (
     <ThemeProvider theme={theme}>

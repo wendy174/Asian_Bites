@@ -19,16 +19,9 @@ function NavBar({influencer, updateInfluencer}) {
         updateInfluencer(null);
       }
     })
-    navigate('/signin')
+    navigate('/')
   }
 
-  
-
-  console.log(influencer)
-
-  
-
-  
 
   const handleUserName = () => {
     if (influencer === null) {

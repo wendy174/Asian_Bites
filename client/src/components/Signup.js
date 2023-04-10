@@ -43,9 +43,6 @@ export default function SignUp({updateInfluencer}) {
   const navigate = useNavigate()
 
 
-
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const influencer = {
@@ -71,8 +68,6 @@ export default function SignUp({updateInfluencer}) {
       }
   })
   }
-
-  console.log(errors)
 
 
   const handleChange = (e) => {
