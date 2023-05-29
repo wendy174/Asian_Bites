@@ -16,7 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 import { useState, useEffect } from "react";
-import  { useParams } from 'react-router-dom'
+import  { useParams, Link } from 'react-router-dom'
 
 
 const ExpandMore = styled((props) => {
@@ -95,7 +95,7 @@ function SinglePost() {
               </IconButton>
               <CardActions sx={{ml: 'auto'}}>
                 <Button >Delete</Button>
-                <Button>Edit</Button>
+                <Button><Link to={`/posts/${post.id}/edit`}>Edit</Link></Button>
               </CardActions>
           
               <ExpandMore

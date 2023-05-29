@@ -46,6 +46,9 @@ export default function PostForm({updatePost}) {
     const {id} = useParams()
     const navigate = useNavigate()
 
+
+
+
     useEffect(() => {
         fetch(`/posts/${id}`)
         .then(res => res.json())
@@ -74,10 +77,13 @@ export default function PostForm({updatePost}) {
           navigate('/postlist')
         } else {
           //Display errors
-          res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+          res.json().then(item => setErrors(item.errors))
+         
         }
       })
     }
+
+     // res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
   
 
   return (
@@ -95,21 +101,24 @@ export default function PostForm({updatePost}) {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <PostAddIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          {/* <Typography component="h1" variant="h5"> */}
+          <Typography component="h1" variant="h5" style={{ color: 'purple', textAlign: 'center'}}>
             Edit this post
+            {errors?errors.map(e => <div>{e}</div>):null}
+
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              name="restaurant"
+              name="restaurant_name"
               label="Restaurant Name"
-              type="restaurant"
-              id="restaurant" 
-              autoComplete="current-restaurant"
+              id="restaurant_name" 
+              autoComplete="current-restaurant_name"
               value={formData.restaurant_name}
               onChange={handleChange}
+              autoFocus
             />
             <TextField
               margin="normal"
@@ -176,11 +185,11 @@ export default function PostForm({updatePost}) {
               margin="normal"
               required
               fullWidth
-              name="cuisine"
-              label="Cuisine"
-              type="cuisine"
-              id="cuisine"
-              autoComplete="current-cuisine"
+              name="cusine"
+              label="Cusine"
+              type="cusine"
+              id="cusine"
+              autoComplete="current-cusine"
               value={formData.cusine}
               onChange={handleChange}
             />

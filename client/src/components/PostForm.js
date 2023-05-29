@@ -45,6 +45,9 @@ export default function PostForm({handleNewPost}) {
   const navigate = useNavigate()
   const [errors, setErrors] = useState([])
 
+  console.log(errors)
+
+
   let newPost = { 
       description: description, 
       image: image, 
@@ -58,18 +61,6 @@ export default function PostForm({handleNewPost}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-  //   fetch("/posts", {
-  //     method: "POST",
-  //     headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //     body: JSON.stringify(newPost)
-  //   })
-  //   .then((r => r.json()))
-  //   .then(data => 
-  //     handleNewPost(data)
-  //     )
-  // };
 
 
   fetch("/posts", {
@@ -85,6 +76,7 @@ export default function PostForm({handleNewPost}) {
       navigate('/postlist')
     } else {
       //Display errors
+      // r.json().then(json => console.log(json.errors))
       r.json().then(json => setErrors(json.errors))
     }
   })
