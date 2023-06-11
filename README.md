@@ -8,3 +8,7 @@ Features to still build out:
 -Using google maps to pin all food places 
 -Create Restaurant model 
 -Using LocalStorage to contain user Avatar 
+
+
+Start backend: rails s 
+Start frontend: npm start 
