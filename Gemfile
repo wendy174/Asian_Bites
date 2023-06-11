@@ -56,3 +56,5 @@ end
 gem "active_model_serializers", "~> 0.10.13"
 
 gem 'hirb', '~> 0.7.3'
+
+gem 'sprockets', '~> 4.0'
