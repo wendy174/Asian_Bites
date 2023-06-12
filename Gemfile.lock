@@ -187,7 +187,7 @@ DEPENDENCIES
   faker
   hirb (~> 0.7.3)
   listen (~> 3.3)
-  pg (~> 1.1)
+  pg
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   spring
