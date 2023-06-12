@@ -1,0 +1,19 @@
+  version: "3.9"
+  services:
+    backend:
+      image: wendyrails:latest
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWD: password
+        POSTGRES_HOST: db
+        SERVER_HOST_NAME: backend
+      ports:
+        - 3000:3000
+    frontend:
+      image: wendy-client:1.0
+      ports:
+        - 3001:3000
+    db:
+      image: postgres:alpine3.15
+      environment:
+        POSTGRES_PASSWORD: password
