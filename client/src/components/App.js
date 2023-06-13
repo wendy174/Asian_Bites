@@ -48,10 +48,27 @@ function App() {
   }
 
   // deletes post, passed down to postcard 
-   function handleDeletePost(deletedPost) {
-        const updatedPost = posts.filter(post => post.id !== deletedPost.id); 
-        setPosts(updatedPost)
-    }
+  //  function handleDeletePost(deletedPost) {
+  //       const updatedPost = posts.filter(post => post.id !== deletedPost.id); 
+  //       setPosts(updatedPost)
+  //   }
+
+  function handleDeletePost(deletedPost) {
+    fetch(`/posts/${deletedPost.id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          const updatedPost = posts.filter((post) => post.id !== deletedPost.id);
+          setPosts(updatedPost);
+        } else {
+          console.log('Failed to delete post');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 
 // handles new post
   function handleNewPost(newPost) {
