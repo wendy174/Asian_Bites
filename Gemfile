@@ -12,7 +12,7 @@ gem "rails"
 gem "pg"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -58,3 +58,5 @@ gem "active_model_serializers", "~> 0.10.13"
 gem 'hirb', "~> 0.7.3"
 
 gem "webpacker", ">= 5.0"
+
+

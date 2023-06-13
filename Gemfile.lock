@@ -196,7 +196,7 @@ DEPENDENCIES
   hirb (~> 0.7.3)
   listen (~> 3.3)
   pg
-  puma (~> 5.0)
+  puma
   rails
   spring
   tzinfo-data
