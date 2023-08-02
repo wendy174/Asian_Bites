@@ -42,12 +42,22 @@ function PostCard({post, handleDeletePost}) {
     setExpanded(!expanded);
   };
 
-  const handleDelete = () => { 
+  const handleDelete = () => {
     fetch(`/posts/${post.id}`, {
-    method: "DELETE",
-  })
-    .then(() => handleDeletePost(post));
-  }
+      method: 'DELETE',
+    })
+      .then((res) => {
+        if (res.ok) {
+          handleDeletePost(post);
+        } else {
+          console.log('Failed to delete post');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
 
   const handleLiked = () => {
     setIsLiked(!isLiked);

@@ -51,7 +51,7 @@ function NavBar({influencer, updateInfluencer}) {
           ) : (
             <>
               <Button color="inherit" component={Link} to="/signin">
-                Sign In 
+                Log In
               </Button>
               <Button color="inherit" component={Link} to="/signup">
                 Sign Up
