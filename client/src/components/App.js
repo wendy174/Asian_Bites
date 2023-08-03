@@ -10,11 +10,7 @@ import SinglePost from './SinglePost'
 import PostList from './PostList'
 import Hero from './Hero/Hero'
 
-
-
-
-
-function App() {
+export default function App() {
   const [influencer, setCurrentInfluencer] = useState('')
   const [errors, setErrors] = useState(false)
   const [posts, setPosts] = useState([])
@@ -47,12 +43,8 @@ function App() {
     .then(setPosts)
   }
 
-  // deletes post, passed down to postcard 
-  //  function handleDeletePost(deletedPost) {
-  //       const updatedPost = posts.filter(post => post.id !== deletedPost.id); 
-  //       setPosts(updatedPost)
-  //   }
-
+  
+// deletes post 
   function handleDeletePost(deletedPost) {
     const updatedPosts = posts.filter((post) => post.id !== deletedPost.id);
     setPosts(updatedPosts);
@@ -99,4 +91,4 @@ function updateInfluencer(influencer) {
   );
 }
 
-export default App;
+
