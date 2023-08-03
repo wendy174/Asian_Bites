@@ -31,7 +31,7 @@ const ExpandMore = styled((props) => {
   }));
 
 
-function SinglePost() { 
+  export default function SinglePost() { 
   const [expanded, setExpanded] = React.useState(false);
   const [post, setPost] = useState({reviews:[]})
   const [errors, setErrors] = useState(false)
@@ -129,5 +129,5 @@ function SinglePost() {
 }
 
 
-export default SinglePost; 
+
 

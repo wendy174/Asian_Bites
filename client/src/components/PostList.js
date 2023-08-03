@@ -4,7 +4,7 @@ import PostCard from "./PostCard";
 import Grid from '@mui/material/Unstable_Grid2';
 
 
-function PostList({posts, handleDeletePost}) { 
+export default function PostList({posts, handleDeletePost}) { 
 
   // if (!posts){posts=[]}
     return (
@@ -18,4 +18,3 @@ function PostList({posts, handleDeletePost}) {
     );
 }
 
-export default PostList; 

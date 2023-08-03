@@ -34,7 +34,7 @@ const ExpandMore = styled((props) => {
 
  
 
-function PostCard({post, handleDeletePost}) { 
+  export default function PostCard({post, handleDeletePost}) { 
   const [expanded, setExpanded] = React.useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -140,7 +140,6 @@ function PostCard({post, handleDeletePost}) {
   );
 }
     
-export default PostCard; 
 
 
 
